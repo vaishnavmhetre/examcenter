@@ -12,11 +12,12 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
         body{
-            background: #e8e8e8;
+            background: #e2e2e2;
         }
     </style>
 </head>
@@ -48,6 +49,9 @@
                         </li>
                         <li>
                             <a href="{{--{{ route('home') }}--}}#">Exams</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('categories') }}">Categories</a>
                         </li>
                     </ul>
 
@@ -82,6 +86,20 @@
                 </div>
             </div>
         </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    @foreach (['danger', 'warning', 'success', 'info'] as $key)
+                        @if(Session::has($key))
+                            <div class="alert alert-{{ $key }} alert-auto-dismiss alert-dismissable fade in" >
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {!! Session::get($key) !!}
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+        </div>
 
         @yield('content')
     </div>

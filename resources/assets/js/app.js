@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -21,3 +20,9 @@ Vue.component('question-create-component', require('./components/QuestionCreateC
 const app = new Vue({
     el: '#app'
 });
+
+$(document).ready(function(){
+    $(".alert-auto-dismiss").fadeTo(5000, 500).slideUp(500, function () {
+        $(".alert-auto-dismiss").alert('close');
+    });
+})

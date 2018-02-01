@@ -22,6 +22,18 @@ Route::get('/users/create', 'UserController@create')->name('users.create')->midd
 Route::post('/users/create', 'UserController@store')->name('users.store')->middleware([]);
 Route::get('/users/{user}', 'UserController@show')->name('users.show')->middleware([]);
 
+Route::get('categories', 'CategoryController@index')->name('categories')->middleware([]);
+Route::get('categories/create','CategoryController@create')->name('categories.create')->middleware([]);
+Route::post('categories/create','CategoryController@store')->name('categories.store')->middleware([]);
+Route::get('categories/{category}/edit/name', 'CategoryController@updateNameView')->name('categories.edit.name.view')->middleware([]);
+Route::put('categories/{category}/name', 'CategoryController@updateName')->name('categories.edit.name')->middleware([]);
+Route::get('categories/{category}/edit/groups', 'CategoryController@updateGroupsView')->name('categories.edit.groups.view')->middleware([]);
+Route::put('categories/{category}/groups', 'CategoryController@updateGroups')->name('categories.edit.groups.store')->middleware([]);
+Route::delete('categories/{category}/groups', 'CategoryController@removeGroups')->name('categories.edit.groups.remove')->middleware([]);
+Route::get('categories/{category}/delete', 'CategoryController@deleteView')->name('categories.delete.view')->middleware([]);
+Route::get('categories/{category}', 'CategoryController@show')->name('categories.show')->middleware([]);
+Route::delete('categories/{category}', 'CategoryController@delete')->name('categories.delete')->middleware([]);
+
 /*Route::get('viewtest', function(){
     $categories = App\Category::with('groups')->get();
     return view('user.create', compact('categories'));
